@@ -50,3 +50,9 @@ build_script:
 artifacts:
   - path: src\aspnet-core-unittesting\bin
     name: Build.Output
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test_script: dnx --project test\aspnet-core-unittesting.unittests test
