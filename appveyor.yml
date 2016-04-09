@@ -1,0 +1,52 @@
+﻿# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# Retain the package cache between builds
+cache:
+  - C:\Users\appveyor\.dnx\packages
+
+# version format
+version: 0.{build}
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+# http://blog.appveyor.com/2014/06/04/shallow-clone-for-git-repositories/
+shallow_clone: true
+force_https_clone: true
+
+configuration: Release
+
+# scripts that run after cloning repository
+install:
+  - dnvm install 1.0.0-rc1-update1
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+before_build:
+  - dnu restore
+
+build_script:
+  - dnu build src\aspnet-core-unittesting --configuration $(CONFIGURATION)
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  - path: src\aspnet-core-unittesting\bin\$(CONFIGURATION)
+    name: Build.Output
