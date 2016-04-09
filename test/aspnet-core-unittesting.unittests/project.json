@@ -5,7 +5,6 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "frameworks": {
     "dnx451": { },
     "dnxcore50": {
@@ -17,5 +16,13 @@
         "System.Threading": "4.0.11-beta-23516"
       }
     }
+  },
+  "dependencies": {
+    "aspnet-core-unittesting": "1.0.0-*",
+    "xunit": "2.1.0",
+    "xunit.runner.dnx": "2.1.0-rc1-build204"
+  },
+  "commands": {
+    "test": "xunit.runner.dnx"
   }
 }
