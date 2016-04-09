@@ -41,12 +41,12 @@ before_build:
   - dnu restore
 
 build_script:
-  - dnu build src\aspnet-core-unittesting --configuration $(CONFIGURATION)
+  - dnu build src\aspnet-core-unittesting --configuration Release
 
 #---------------------------------#
 #      artifacts configuration    #
 #---------------------------------#
 
 artifacts:
-  - path: src\aspnet-core-unittesting\bin\$(CONFIGURATION)
+  - path: src\aspnet-core-unittesting\bin
     name: Build.Output
