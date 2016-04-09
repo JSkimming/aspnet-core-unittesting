@@ -41,7 +41,7 @@ before_build:
   - dnu restore
 
 build_script:
-  - dnu build src\aspnet-core-unittesting --configuration Release
+  - dnu build src\aspnet-core-unittesting --configuration Release --quiet
 
 #---------------------------------#
 #      artifacts configuration    #
